@@ -96,4 +96,5 @@ int ft_init_global(t_global *global, char **argv)
 	global->mutex = ft_init_fork(global);
     if (!global->philo || !global->mutex)
 		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }

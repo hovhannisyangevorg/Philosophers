@@ -44,7 +44,7 @@ struct s_info
 	size_t			id;
 	size_t			date_of_eat;
 	size_t			date_of_sleep;
-	size_t			count_each_eat;
+	int			count_each_eat;
 	pthread_t		philo;
 	pthread_mutex_t	last_eat_mutex;
 	pthread_mutex_t	each_eat;

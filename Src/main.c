@@ -22,5 +22,7 @@ int main(int argc, char **argv)
 	if (ft_init_global(&global, argv))
 		return (EXIT_FAILURE);
 	ft_create_thread(&global);
+	ft_free_philo(&global);
+	ft_free_global(&global);
 	return (0);
 }

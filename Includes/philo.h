@@ -61,4 +61,7 @@ int	    ft_set_dead(t_info *philo);
 void	ft_lockprintf(t_info *philo, char *messg);
 void	*ft_handler_simulator(t_info *philo);
 
+void	ft_free_philo(t_global *global);
+void	ft_free_global(t_global *global);
+
 #endif
