@@ -23,8 +23,8 @@ INCS			= -I$(INC_DIR)
 
 CC				= cc 
 RM				= rm -rf
-THRED_FSAN		= -g3 -fsanitize=thread
-CFLAGS			= -Wall -Wextra -Werror #$(THRED_FSAN)
+THRED_FSAN		= -g3 #-fsanitize=thread
+CFLAGS			= -Wall -Wextra -Werror $(THRED_FSAN)
 MK				= mkdir -p
 CORE_COUNT 		= $(shell nproc)
 ALL			= all

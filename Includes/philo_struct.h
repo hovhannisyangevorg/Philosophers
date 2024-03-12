@@ -21,22 +21,30 @@
 # include <time.h>
 # include <limits.h>
 
+#define TRUE 1
 #define MAX 6
 #define MIN 5
 
-typedef struct 	s_global	t_global;
-typedef struct	s_input	t_input;
+#define TAKEN_LEFT "Has taken a left fork." 
+#define TAKEN_RIGHT "Has taken a right fork."
+#define EAT_NOW "Is eating."
+#define SLEEP "Is sleeping."
+#define THINK "Is thinking."
+#define IS_DEAD "Is dead"
 
+
+typedef struct	s_info	t_info;
+typedef struct 	s_global t_global;
 typedef void*	(*t_thread_handler)(void*);
 
-typedef struct s_info
+struct s_info
 {
-	size_t			last_eat; //-
+	size_t			last_eat;
 	int				*is_dead;
-	int				id;
-	int				date_of_eat;
-	int				date_of_sleep;
-	int				count_each_eat;
+	size_t			id;
+	size_t			date_of_eat;
+	size_t			date_of_sleep;
+	int			count_each_eat;
 	pthread_t		philo;
 	pthread_mutex_t	last_eat_mutex;
 	pthread_mutex_t	each_eat;
@@ -45,18 +53,18 @@ typedef struct s_info
 	pthread_mutex_t	*left;
 	pthread_mutex_t	*right;
 
-}		t_info;
+};
 
-typedef struct s_global
+struct s_global
 {
-	size_t			time_to_die; //-
-	int				count_philo;
-	int				max_eat;
+	size_t			time_to_die;
+	size_t			count_philo;
+	int 			max_eat;
 	int				is_dead;
-	t_info			*philo;
 	pthread_mutex_t	mutex_write;
 	pthread_mutex_t	mutex_die;
+	t_info			*philo;
 	pthread_mutex_t	*mutex;
-}		t_global;
+};
 
 #endif

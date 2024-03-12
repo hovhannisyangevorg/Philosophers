@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int	ft_isnumber(char const *args)
+int	ft_isnumber(char *args)
 {
 	int i;
 
@@ -27,18 +27,18 @@ int	ft_isnumber(char const *args)
 	return (EXIT_SUCCESS);
 }
 
-int	ft_isvulid(char const *args)
+int	ft_isvulid(char *args)
 {
 	int			is_overflowed;
 
 	is_overflowed = 0;
-	ft_atos((char *)args, &is_overflowed);
+	ft_atos(args, &is_overflowed);
 	if (is_overflowed)
 		return (ft_panic("Error: Invalid argument - Value must be within the range of the minimum size_t value to the maximum size_t value."));
 	return (EXIT_SUCCESS);
 }
 
-int	ft_vuelidate(int argc, char const **argv)
+int	ft_vuelidate(int argc, char **argv)
 {
 	size_t	i;
 
