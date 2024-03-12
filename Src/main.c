@@ -12,11 +12,19 @@
 
 #include "philo.h"
 
-int main(int argc, char const **argv)
+
+
+
+int main(int argc, char **argv)
 {
+	t_global global;
+
 	if (ft_vuelidate(argc, argv))
 		return (EXIT_FAILURE);
-
+	ft_init_global(&global, argv);
+	if (!global.philo || !global.mutex)
+		return (EXIT_FAILURE);
+	
 	
 	return (0);
 }
