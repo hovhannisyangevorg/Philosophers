@@ -12,10 +12,6 @@
 
 #include "philo.h"
 
-size_t	ft_get_time(void);
-void	ft_usleap(unsigned long t1);
-
-
 size_t	ft_get_time(void)
 {
 	static size_t				start;

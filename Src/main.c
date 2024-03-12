@@ -12,19 +12,15 @@
 
 #include "philo.h"
 
-
-
-
 int main(int argc, char **argv)
 {
 	t_global global;
 
+	ft_get_time();
 	if (ft_vuelidate(argc, argv))
 		return (EXIT_FAILURE);
-	ft_init_global(&global, argv);
-	if (!global.philo || !global.mutex)
+	if (ft_init_global(&global, argv))
 		return (EXIT_FAILURE);
-	
-	
+	ft_create_thread(&global);
 	return (0);
 }

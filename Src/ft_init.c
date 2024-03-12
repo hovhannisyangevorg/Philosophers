@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int	ft_is_dead(char **argv)
+int	ft_have_last(char **argv)
 {
 	int isower;
 
@@ -81,17 +81,19 @@ pthread_mutex_t	*ft_init_fork(t_global *global)
 	return (mutex);
 }
 
-void ft_init_global(t_global *global, char **argv)
+int ft_init_global(t_global *global, char **argv)
 {
 	int isower;
 
 	isower = 0;
 	global->time_to_die = ft_atos(argv[2], &isower);
 	global->count_philo = ft_atos(argv[1], &isower);
-	global->max_eat = ft_is_dead(argv);
+	global->max_eat = ft_have_last(argv);
 	global->is_dead = 0;
 	pthread_mutex_init(&(global->mutex_write), NULL);
 	pthread_mutex_init(&(global->mutex_die), NULL);
 	global->philo = ft_init_philo(global, argv);
 	global->mutex = ft_init_fork(global);
+    if (!global->philo || !global->mutex)
+		return (EXIT_FAILURE);
 }

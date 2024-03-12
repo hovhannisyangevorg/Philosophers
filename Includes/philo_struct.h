@@ -21,8 +21,17 @@
 # include <time.h>
 # include <limits.h>
 
+#define TRUE 1
 #define MAX 6
 #define MIN 5
+
+#define TAKEN_LEFT "Has taken a left fork." 
+#define TAKEN_RIGHT "Has taken a right fork."
+#define EAT_NOW "Is eating."
+#define SLEEP "Is sleeping."
+#define THINK "Is thinking."
+#define IS_DEAD "Is dead"
+
 
 typedef struct	s_info	t_info;
 typedef struct 	s_global t_global;
@@ -30,7 +39,7 @@ typedef void*	(*t_thread_handler)(void*);
 
 struct s_info
 {
-	size_t			last_eat; //-
+	size_t			last_eat;
 	int				*is_dead;
 	size_t			id;
 	size_t			date_of_eat;
