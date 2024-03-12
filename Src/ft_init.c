@@ -54,15 +54,25 @@ t_info	*ft_init_philo(t_global *global, char **argv)
 	return (philo);
 }
 
+void	ft_init_mutex(t_global *global, pthread_mutex_t *mutex)
+{
+	size_t i;
+
+	i = -1;
+	while (++i < global->count_philo)
+		pthread_mutex_init(&mutex[i], NULL);
+}
+
 pthread_mutex_t	*ft_init_fork(t_global *global)
 {
 	size_t i;
 	t_info *philo;
 	pthread_mutex_t	*mutex;
 
-	mutex = malloc(sizeof(pthread_mutex_t) * global->count_philo);
+	mutex = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * global->count_philo);
 	if (!mutex)
 		return (NULL);
+	ft_init_mutex(global, mutex);
 	i = -1;
 	philo = global->philo;
 	while (++i < global->count_philo)
@@ -72,11 +82,8 @@ pthread_mutex_t	*ft_init_fork(t_global *global)
 			philo->left = &mutex[i];
 			philo->right = &mutex[0];
 		} 
-		else
-		{
-			philo->left = &mutex[i];
-			philo->right = &mutex[i + 1];
-		}
+		philo->left = &mutex[i];
+		philo->right = &mutex[i + 1];
 	}
 	return (mutex);
 }
