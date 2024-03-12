@@ -50,7 +50,7 @@ t_info	*ft_init_philo(t_global *global, char **argv)
 	if (!philo)
 		return (NULL);
 	while (++i < global->count_philo)
-		ft_init_args(global, &philo[i], argv, i);
+		ft_init_args(global, &philo[i], argv, i + 1);
 	return (philo);
 }
 
@@ -79,11 +79,11 @@ pthread_mutex_t	*ft_init_fork(t_global *global)
 	{
 		if (i == (global->count_philo - 1))
 		{
-			philo->left = &mutex[i];
-			philo->right = &mutex[0];
+			philo[i].left = &mutex[i];
+			philo[i].right = &mutex[0];
 		} 
-		philo->left = &mutex[i];
-		philo->right = &mutex[i + 1];
+		philo[i].left = &mutex[i];
+		philo[i].right = &mutex[i + 1];
 	}
 	return (mutex);
 }

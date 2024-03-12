@@ -63,7 +63,7 @@ int ft_is_philo_dead(t_global *global)
             global->is_dead = 1;
             pthread_mutex_unlock(&(global->mutex_die));
             pthread_mutex_lock(&(global->mutex_write));
-            printf("%ld %zu %s\n", philo->id, (ft_get_time() - philo->last_eat), IS_DEAD);
+            printf("%ld %zu %s\n", philo[i].id, (ft_get_time() - philo[i].last_eat), IS_DEAD);
             pthread_mutex_unlock(&(global->mutex_write));
             pthread_mutex_unlock(&(philo[i].last_eat_mutex));
             return (EXIT_FAILURE);
@@ -77,7 +77,7 @@ int	ft_iseat(t_global *global)
 {
 	size_t i;
 
-	i = -1;
+	i = 0;
 	while ((global->max_eat != -1) && (i < global->count_philo))
 	{
 		pthread_mutex_lock(&(global->philo[i].each_eat));
